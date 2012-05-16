@@ -4,23 +4,26 @@
     <?php if ($this->configuration->getValue('list.batch_actions')): ?>
     <td></td>
     <?php endif; ?>
-    <?php foreach ($this->configuration->getValue('list.display') as $name => $field): ?>
-    <td>
-      [?php if(isset($filters['<?php echo $name ?>']) && isset($filterFields['<?php echo $name ?>'])/* && $filterFields['<?php echo $name ?>']->isReal() && !$filters['<?php echo $name ?>']->isHidden()*/): ?]
-        [?php include_partial('<?php echo $this->getModuleName() ?>/filters_field', array(
-          'name'       => '<?php echo $name ?>',
-          'attributes' => $filterFields['<?php echo $name ?>']->getConfig(
-            'attributes',
-            array('class' => sfTwitterBootstrap::guessLengthFromType($filterFields['<?php echo $name ?>']->getType()))
-          ),
-          'label'      => $filterFields['<?php echo $name ?>']->getConfig('label'),
-          'help'       => $filterFields['<?php echo $name ?>']->getConfig('help'),
-          'form'       => $filters,
-          'field'      => $filterFields['<?php echo $name ?>'],
-        )) ?]
-     [?php endif; ?]
-    </td>
-    <?php endforeach; ?>
+<?php foreach ($this->configuration->getValue('list.display') as $name => $field): ?>
+[?php slot('sf_admin.current_filter_field') ?]
+<td>
+  [?php if(isset($filters['<?php echo $name ?>']) && isset($filterFields['<?php echo $name ?>'])): ?]
+    [?php include_partial('<?php echo $this->getModuleName() ?>/filters_field', array(
+    'name'       => '<?php echo $name ?>',
+    'attributes' => $filterFields['<?php echo $name ?>']->getConfig(
+    'attributes',
+    array('class' => sfTwitterBootstrap::guessLengthFromType($filterFields['<?php echo $name ?>']->getType()))
+    ),
+    'label'      => $filterFields['<?php echo $name ?>']->getConfig('label'),
+    'help'       => $filterFields['<?php echo $name ?>']->getConfig('help'),
+    'form'       => $filters,
+    'field'      => $filterFields['<?php echo $name ?>'],
+    )) ?]
+  [?php endif; ?]
+</td>
+[?php end_slot(); ?]
+<?php echo $this->addCredentialCondition("  [?php include_slot('sf_admin.current_filter_field') ?]", $field->getConfig()) ?>
+<?php endforeach; ?>
     <td>
       [?php echo $filters->renderHiddenFields() ?]
 
