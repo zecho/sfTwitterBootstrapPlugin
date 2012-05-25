@@ -86,10 +86,6 @@ input.btn-fix-margin {
   margin-bottom: 3px;
 }
 
-input[type="checkbox"] {
-  margin-top: 9px;
-}
-
 input[type="radio"] {
   width: auto;
 }
