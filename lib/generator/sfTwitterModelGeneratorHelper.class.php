@@ -121,7 +121,9 @@ abstract class sfTwitterModelGeneratorHelper extends sfModelGeneratorHelper
   protected function generateDeleteConfirm($confirm)
   {
     $confirmMsg = __($confirm, array(), 'sf_admin');
-    $confirm = "var self = this; bootbox.confirm('$confirmMsg', function(result) {if (result) {".$this->generateMethodFunction('delete')."}}); return false;";
+    $ok = __('Ok', array(), 'sf_admin');
+    $cancel = __('Cancel', array(), 'sf_admin');
+    $confirm = "var self = this; bootbox.confirm('$confirmMsg', '$cancel', '$ok', function(result) {if (result) {".$this->generateMethodFunction('delete')."}}); return false;";
     return $confirm;
   }
 
