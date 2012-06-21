@@ -161,6 +161,14 @@ fieldset.no-legend {
   margin-bottom: 0;
 }
 
+.sf_admin_form_row ul, ul.audit-trail {
+  margin:0;
+}
+
+.sf_admin_form_row ul li, ul.audit-trail li {
+  list-style-type:none;
+}
+
 /* sytling radio_list and checkbox_list */
 ul.radio_list, ul.checkbox_list {margin-left: 0px; padding-top: 6px; }
 
