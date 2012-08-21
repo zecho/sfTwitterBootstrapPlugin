@@ -11,8 +11,11 @@
     [?php include_partial('<?php echo $this->getModuleName() ?>/filters_field', array(
     'name'       => '<?php echo $name ?>',
     'attributes' => $filterFields['<?php echo $name ?>']->getConfig(
-    'attributes',
-    array('class' => sfTwitterBootstrap::guessLengthFromType($filterFields['<?php echo $name ?>']->getType()))
+        'attributes',
+        sfTwitterBootstrap::getDefaultAttributesFromField(
+                    $filters['<?php echo $name ?>'] instanceof sfOutputEscaper ? $filters['<?php echo $name ?>']->getRawValue() : $filters['<?php echo $name ?>'],
+                    $filterFields['<?php echo $name ?>']->getType()
+        )
     ),
     'label'      => $filterFields['<?php echo $name ?>']->getConfig('label'),
     'help'       => $filterFields['<?php echo $name ?>']->getConfig('help'),

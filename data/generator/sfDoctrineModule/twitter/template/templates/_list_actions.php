@@ -46,9 +46,11 @@
               [?php $filters->getWidgetSchema()->setIdFormat('filters_field_modal_%s'); ?]
               [?php include_partial('<?php echo $this->getModuleName() ?>/filters_field_modal', array(
                 'name'       => $name,
-                'attributes' => $field->getConfig('attributes', array(
-                  'class' => sfTwitterBootstrap::guessLengthFromType($field->getType()),
-                )),
+                'attributes' => $field->getConfig('attributes',
+                        sfTwitterBootstrap::getDefaultAttributesFromField(
+                                $filters[$name] instanceof sfOutputEscaper ? $filters[$name]->getRawValue() : $filters[$name],
+                                $field->getType()
+                        )),
                 'label'      => $field->getConfig('label'),
                 'help'       => $field->getConfig('help'),
                 'form'       => $filters,
