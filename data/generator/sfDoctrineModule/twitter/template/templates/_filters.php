@@ -30,8 +30,7 @@
       [?php
         $icon_filter = '';
         $icon_reset  = '';
-        if(sfTwitterBootstrap::getProperty('use_icons_in_button', false))
-        {
+        if (sfTwitterBootstrap::getProperty('use_icons_in_button', false)) {
           $icon_filter = '<i class="icon-search icon-white"></i> ';
           $icon_reset  = '<i class="icon-refresh"></i> ';
         }

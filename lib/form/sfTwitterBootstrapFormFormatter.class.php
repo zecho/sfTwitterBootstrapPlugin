@@ -18,8 +18,8 @@ class sfWidgetFormSchemaFormatterTwitterBootstrap extends sfWidgetFormSchemaForm
     /**
      * Generates a label for the given field name.
      *
-     * @param  string $name        The field name
-     * @param  array  $attributes  Optional html attributes for the label tag
+     * @param string $name       The field name
+     * @param array  $attributes Optional html attributes for the label tag
      *
      * @return string The label tag
      */
@@ -27,21 +27,19 @@ class sfWidgetFormSchemaFormatterTwitterBootstrap extends sfWidgetFormSchemaForm
     {
         $labelName = $this->generateLabelName($name);
 
-        if (false === $labelName)
-        {
+        if (false === $labelName) {
             return '';
         }
 
-        if (!isset($attributes['for']))
-        {
+        if (!isset($attributes['for'])) {
             $attributes['for'] = $this->widgetSchema->generateId($this->widgetSchema->generateName($name));
         }
 
         if ($this->validatorSchema) {
             $fields = $this->validatorSchema->getFields();
-            if(isset($fields[$name]) && $fields[$name] != null) {
+            if (isset($fields[$name]) && $fields[$name] != null) {
                 $field = $fields[$name];
-                if($field->hasOption('required') && $field->getOption('required')) {
+                if ($field->hasOption('required') && $field->getOption('required')) {
                     $attributes['class'] = isset($attributes['class']) ? $attributes['class'] : '';
                     $attributes['class'] .= 'input-obligation';
                 }

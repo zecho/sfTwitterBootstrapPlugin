@@ -6,4 +6,4 @@
 
 EOF
 , strtolower($field->getType()), $name, $this->renderField($field)), $field->getConfig()) ?>
-<?php endforeach; ?>
+<?php endforeach;

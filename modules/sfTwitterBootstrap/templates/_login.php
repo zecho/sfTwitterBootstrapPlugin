@@ -2,8 +2,7 @@
   use_helper('I18N');
 
   $icon = '';
-  if(sfTwitterBootstrap::getProperty('use_icons_in_button', false))
-  {
+  if (sfTwitterBootstrap::getProperty('use_icons_in_button', false)) {
     $icon = '<i class="icon-off icon-white"></i> ';
   }
 ?>

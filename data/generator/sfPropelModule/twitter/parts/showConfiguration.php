@@ -2,6 +2,7 @@
   {
     $configuration = parent::getConfig();
     $configuration['show'] = $this->getFieldsShow();
+
     return $configuration;
   }
 
@@ -17,8 +18,7 @@
                                           'actions'        => $this->getShowActions(),
                                         ) ;
 
-    foreach ($this->getShowDisplay() as $name)
-    {
+    foreach ($this->getShowDisplay() as $name) {
       list($field, $flag) = sfModelGeneratorConfigurationField::splitFieldWithFlag($name);
       $field = new sfModelGeneratorConfigurationField($field, array_merge(
         array('type' => 'Text', 'label' => sfInflector::humanize(sfInflector::underscore($field))),
@@ -32,8 +32,7 @@
       $this->configuration['show']['display'][$name] = $field;
     }
 
-    foreach ($this->configuration['show']['actions'] as $action => $parameters)
-    {
+    foreach ($this->configuration['show']['actions'] as $action => $parameters) {
       $this->configuration['show']['actions'][$action] = $this->fixActionParameters($action, $parameters);
     }
 

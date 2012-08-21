@@ -14,4 +14,4 @@ EOF
   $catalogue,
   $this->renderField($field)
 ), $field->getConfig()) ?>
-<?php endforeach ?>
+<?php endforeach;

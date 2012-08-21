@@ -16,8 +16,7 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Actions extends <?ph
   {
     $this->configuration = new <?php echo $this->getModuleName() ?>GeneratorConfiguration();
 
-    if (!$this->getUser()->hasCredential($this->configuration->getCredentials($this->getActionName())))
-    {
+    if (!$this->getUser()->hasCredential($this->configuration->getCredentials($this->getActionName()))) {
       $this->forward(sfConfig::get('sf_secure_module'), sfConfig::get('sf_secure_action'));
     }
 

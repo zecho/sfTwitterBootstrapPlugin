@@ -9,8 +9,7 @@
           <span class="help-pagination">
             [?php
               $nb = $pager->getMaxPerPage();
-              if($pager->getPage() == $pager->getLastPage())
-              {
+              if ($pager->getPage() == $pager->getLastPage()) {
                 // we calculate the modulo between the total result and the max_per_page to get the rest of the results
                 $nb = $pager->getNbResults() % $pager->getMaxPerPage();
               }
@@ -53,5 +52,4 @@
     </div>
 
     [?php endif; ?]
-
 

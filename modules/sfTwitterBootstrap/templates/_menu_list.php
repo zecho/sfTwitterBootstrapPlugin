@@ -25,4 +25,4 @@
     <?php endif; ?>
   <?php endif; ?>
 
-<?php endforeach; ?>
+<?php endforeach;

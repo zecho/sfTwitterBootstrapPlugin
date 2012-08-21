@@ -24,4 +24,4 @@
   <?php endforeach; ?>
 <?php elseif (!count($items)): ?>
   <?php echo __('sfTwitterBootstrap is not configured.'); ?>
-<?php endif; ?>
+<?php endif;

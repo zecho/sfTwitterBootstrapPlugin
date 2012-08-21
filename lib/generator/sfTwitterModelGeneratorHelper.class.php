@@ -13,8 +13,7 @@ abstract class sfTwitterModelGeneratorHelper extends sfModelGeneratorHelper
   public function linkToNew($params)
   {
     $icon = '';
-    if(sfTwitterBootstrap::getProperty('use_icons_in_button', false))
-    {
+    if (sfTwitterBootstrap::getProperty('use_icons_in_button', false)) {
       $icon = '<i class="icon-plus icon-white"></i> ';
     }
 
@@ -33,14 +32,12 @@ abstract class sfTwitterModelGeneratorHelper extends sfModelGeneratorHelper
 
   public function linkToDelete($object, $params)
   {
-    if ($object->isNew())
-    {
+    if ($object->isNew()) {
       return '';
     }
 
     $confirm = '';
-    if (isset($params['confirm']))
-    {
+    if (isset($params['confirm'])) {
       $confirm = $this->generateDeleteConfirm($params['confirm']);
     }
 
@@ -49,20 +46,17 @@ abstract class sfTwitterModelGeneratorHelper extends sfModelGeneratorHelper
 
   public function linkToDeleteBtn($object, $params)
   {
-    if ($object->isNew())
-    {
+    if ($object->isNew()) {
       return '';
     }
 
     $confirm = '';
-    if (isset($params['confirm']))
-    {
+    if (isset($params['confirm'])) {
       $confirm = $this->generateDeleteConfirm($params['confirm']);
     }
 
     $icon = '';
-    if(sfTwitterBootstrap::getProperty('use_icons_in_button', false))
-    {
+    if (sfTwitterBootstrap::getProperty('use_icons_in_button', false)) {
       $icon = '<i class="icon-remove icon-white"></i> ';
     }
 
@@ -72,8 +66,7 @@ abstract class sfTwitterModelGeneratorHelper extends sfModelGeneratorHelper
   public function linkToEditBtn($object, $params)
   {
     $icon = '';
-    if(sfTwitterBootstrap::getProperty('use_icons_in_button', false))
-    {
+    if (sfTwitterBootstrap::getProperty('use_icons_in_button', false)) {
       $icon = '<i class="icon-pencil icon-white"></i> ';
     }
 
@@ -83,8 +76,7 @@ abstract class sfTwitterModelGeneratorHelper extends sfModelGeneratorHelper
   public function linkToList($params)
   {
     $icon = '';
-    if(sfTwitterBootstrap::getProperty('use_icons_in_button', false))
-    {
+    if (sfTwitterBootstrap::getProperty('use_icons_in_button', false)) {
       $icon = '<i class="icon-list-alt"></i> ';
     }
 
@@ -94,8 +86,7 @@ abstract class sfTwitterModelGeneratorHelper extends sfModelGeneratorHelper
   public function linkToSave($object, $params)
   {
     $icon = '';
-    if(sfTwitterBootstrap::getProperty('use_icons_in_button', false))
-    {
+    if (sfTwitterBootstrap::getProperty('use_icons_in_button', false)) {
       $icon = '<i class="icon-ok icon-white"></i> ';
     }
 
@@ -104,14 +95,12 @@ abstract class sfTwitterModelGeneratorHelper extends sfModelGeneratorHelper
 
   public function linkToSaveAndAdd($object, $params)
   {
-    if (!$object->isNew())
-    {
+    if (!$object->isNew()) {
       return '';
     }
 
     $icon = '';
-    if(sfTwitterBootstrap::getProperty('use_icons_in_button', false))
-    {
+    if (sfTwitterBootstrap::getProperty('use_icons_in_button', false)) {
       $icon = '<i class="icon-ok icon-white"></i> ';
     }
 
@@ -124,6 +113,7 @@ abstract class sfTwitterModelGeneratorHelper extends sfModelGeneratorHelper
     $yes = __('Yes', array(), 'sf_admin');
     $no = __('No', array(), 'sf_admin');
     $confirm = "var self = this; bootbox.confirm('$confirmMsg', '$no', '$yes', function(result) {if (result) {".$this->generateMethodFunction('delete')."}}); return false;";
+
     return $confirm;
   }
 

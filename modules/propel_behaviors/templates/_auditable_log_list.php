@@ -11,7 +11,7 @@
   <ul class="audit-trail">
     <?php foreach($object->getLastActivity($totalcount, $label) as $activity): ?>
       <li class="item-record activity-record<?php echo !$is_first ? ' other' : ' first' ?>">
-      <?php switch($activity->getLabel()) {
+      <?php switch ($activity->getLabel()) {
              case 'CREATE': ?>
         <?php echo __('<span class="label label-success">%LABEL%</span>', array('%LABEL%' => $activity->getLabel())) ?>
         <?php   break; ?>

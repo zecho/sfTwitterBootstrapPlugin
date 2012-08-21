@@ -17,4 +17,4 @@
       <input type="submit" class="btn" value="[?php echo __('go', array(), 'sf_admin') ?]" onclick="copyIds()" />
     </div>
 </form>
-<?php endif; ?>
+<?php endif;

@@ -41,4 +41,4 @@ use_helper('I18N');
 </ul>
 <?php endif; // if breadcrumbs are enabled ?>
 
-<?php include_component_slot('sf_twitter_bootstrap_permanent_slot') ?>
+<?php include_component_slot('sf_twitter_bootstrap_permanent_slot');

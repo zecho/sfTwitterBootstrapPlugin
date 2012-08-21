@@ -57,4 +57,4 @@ use_helper('I18N');
   </ul>
 <?php elseif (!count($items)): ?>
   <?php echo __('sfTwitterBootstrap is not configured.'); ?>
-<?php endif; ?>
+<?php endif;

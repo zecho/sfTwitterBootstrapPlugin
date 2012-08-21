@@ -13,8 +13,7 @@
 <?php else: ?>
     <li class="sf_admin_action_<?php echo $params['class_suffix'] ?>">
       <?php
-        if(sfTwitterBootstrap::getProperty('use_icons_in_button', false))
-        {
+        if (sfTwitterBootstrap::getProperty('use_icons_in_button', false)) {
           $params['label'] = isset($params['icon']) ? '<i class="'.$params['icon'].'"></i> ' . $params['label'] : $params['label'];
         }
         echo $this->addCredentialCondition($this->getLinkToAction($name, $params, true), $params)

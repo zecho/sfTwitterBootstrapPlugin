@@ -17,4 +17,4 @@ echo $sort[1]== 'desc' ? 'headerSortDown' : 'headerSortUp';
 </th>
 [?php end_slot(); ?]
 <?php echo $this->addCredentialCondition("[?php include_slot('sf_admin.current_header') ?]", $field->getConfig()) ?>
-<?php endforeach; ?>
+<?php endforeach;
