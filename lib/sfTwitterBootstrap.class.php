@@ -36,10 +36,8 @@ class sfTwitterBootstrap
    */
   public static function hasItemsMenu($items)
   {
-    foreach($items as $item)
-    {
-      if (self::itemInMenu($item))
-      {
+    foreach ($items as $item) {
+      if (self::itemInMenu($item)) {
         return true;
       }
     }
@@ -76,17 +74,14 @@ class sfTwitterBootstrap
   {
     $items = self::getItems();
 
-    foreach (self::getCategories() as $category)
-    {
-      if (isset($category['items']))
-      {
+    foreach (self::getCategories() as $category) {
+      if (isset($category['items'])) {
         $items = array_merge($items, $category['items']);
       }
     }
 
     return $items;
   }
-
 
   /**
    * Return the categories as defined in the configuration, initializing their items (if they have any)
@@ -97,10 +92,8 @@ class sfTwitterBootstrap
   public static function getCategories()
   {
     $categories = self::getProperty('categories', array());
-    foreach ($categories as $category_name => $category_data)
-    {
-      if (isset($category_data['items']))
-      {
+    foreach ($categories as $category_name => $category_data) {
+      if (isset($category_data['items'])) {
         array_walk($categories[$category_name]['items'], array(__CLASS__, 'initItem'));
       }
     }
@@ -140,8 +133,7 @@ class sfTwitterBootstrap
    */
   public static function hasPermission($item, $user)
   {
-    if (!$user->isAuthenticated())
-    {
+    if (!$user->isAuthenticated()) {
       return false;
     }
 
@@ -158,13 +150,11 @@ class sfTwitterBootstrap
    */
   public static function routeExists($route, sfContext $context)
   {
-    try
-    {
+    try {
       $context->getRouting()->generate($route);
+
       return true;
-    }
-    catch (Exception $e)
-    {
+    } catch (Exception $e) {
       return false;
     }
   }
@@ -182,28 +172,19 @@ class sfTwitterBootstrap
     $modulename = $context -> getModuleName();
     $translation = self::getProperty("translator", array());
 
-    if (isset($translation[$modulename]))
-    {
-      if (is_array($translation[$modulename]))
-      {
+    if (isset($translation[$modulename])) {
+      if (is_array($translation[$modulename])) {
         return empty($translation[$modulename]["title"]) ? $modulename : $translation[$modulename]["title"];
-      }
-      else
-      {
+      } else {
         return $translation[$modulename];
       }
     }
     // we should check if we can get the module name from the item representing it in the dash menu
-    else foreach (self::getAllItems() as $key => $item)
-      {
-        if (($modulename == $key || $modulename == $item['url']))
-        {
-          if (isset($item['name']))
-          {
+    else foreach (self::getAllItems() as $key => $item) {
+        if (($modulename == $key || $modulename == $item['url'])) {
+          if (isset($item['name'])) {
             return $item['name']; // yay, we got the name!
-          }
-          else
-          {
+          } else {
             break; // we found our item, but it didn't have a special name, break from the search
           }
         }
@@ -253,8 +234,7 @@ class sfTwitterBootstrap
 
   public static function guessLengthFromType($type)
   {
-    switch($type)
-    {
+    switch ($type) {
       case 'Date':
         return 'input-mini';
         break;
@@ -270,5 +250,22 @@ class sfTwitterBootstrap
         return 'input-large';
         break;
     }
+  }
+
+  public static function getDefaultAttributesFromField(sfFormField $field, $type)
+  {
+      switch (get_class($field->getWidget())) {
+          case "sfWidgetFormDateTime":
+              $attributes = array(
+                  'date' => array('class' => self::guessLengthFromType($type)),
+                  'time' => array('class' => self::guessLengthFromType($type)),
+              );
+              break;
+          default:
+              $attributes = array('class' => self::guessLengthFromType($type));
+              break;
+      }
+
+      return array_merge($attributes, $field->getWidget()->getAttributes());
   }
 }

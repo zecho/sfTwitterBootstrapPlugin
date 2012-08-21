@@ -14,7 +14,10 @@
       'name'       => $name,
       'attributes' => $field->getConfig(
         'attributes',
-        array('class' => sfTwitterBootstrap::guessLengthFromType($field->getType()))
+        sfTwitterBootstrap::getDefaultAttributesFromField(
+                    $form[$name] instanceof sfOutputEscaper ? $form[$name]->getRawValue() : $form[$name],
+                    $field->getType()
+        )
       ),
       'label'      => $field->getConfig('label'),
       'help'       => $field->getConfig('help'),
