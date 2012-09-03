@@ -23,7 +23,7 @@
         <legend>[?php echo __($fieldset, array(), '<?php echo $this->getI18nCatalogue() ?>') ?]</legend>
       [?php endif; ?]
 
-      [?php include_partial('<?php echo $this->getModuleName() ?>/show_fieldset', array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>)) ?]
+      [?php include_partial('<?php echo $this->getModuleName() ?>/show_fieldset', array('fields' => $fields, '<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>)) ?]
 
     </fieldset>
   [?php endforeach; ?]

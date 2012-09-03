@@ -20,8 +20,8 @@
 
     foreach ($this->getShowDisplay() as $name => $fields) {
       if (is_array($fields)) { //Fieldset
-        foreach ($fields as $name) {
-          list($field, $flag) = sfModelGeneratorConfigurationField::splitFieldWithFlag($name);
+        foreach ($fields as $fieldName) {
+          list($field, $flag) = sfModelGeneratorConfigurationField::splitFieldWithFlag($fieldName);
           $field = new sfModelGeneratorConfigurationField($field, array_merge(
             array('type' => 'Text', 'label' => sfInflector::humanize(sfInflector::underscore($field))),
             isset($config['default'][$field]) ? $config['default'][$field] : array(),
@@ -30,13 +30,13 @@
           ));
 
           $field->setFlag($flag);
-          $this->configuration['show']['fields'][$name]  = $field;
-          $this->configuration['show']['display'][$name] = $field;
+          $this->configuration['show']['fields'][$fieldName]  = $field;
+          $this->configuration['show']['display'][$fieldName] = $field;
         }
       } else {
-        $name = $fields;
+        $fieldName = $fields;
 
-        list($field, $flag) = sfModelGeneratorConfigurationField::splitFieldWithFlag($name);
+        list($field, $flag) = sfModelGeneratorConfigurationField::splitFieldWithFlag($fieldName);
         $field = new sfModelGeneratorConfigurationField($field, array_merge(
           array('type' => 'Text', 'label' => sfInflector::humanize(sfInflector::underscore($field))),
           isset($config['default'][$field]) ? $config['default'][$field] : array(),
@@ -45,8 +45,8 @@
         ));
 
         $field->setFlag($flag);
-        $this->configuration['show']['fields'][$name]  = $field;
-        $this->configuration['show']['display'][$name] = $field;
+        $this->configuration['show']['fields'][$fieldName]  = $field;
+        $this->configuration['show']['display'][$fieldName] = $field;
       }
     }
 
