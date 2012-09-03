@@ -255,12 +255,19 @@ class sfTwitterBootstrap
   public static function getDefaultAttributesFromField(sfFormField $field, $type)
   {
       switch (get_class($field->getWidget())) {
+          case "sfWidgetFormFilterDate":
+              $field->getWidget()->getOption('from_date')->setAttribute('class', self::guessLengthFromType($type));
+              $field->getWidget()->getOption('to_date')->setAttribute('class', self::guessLengthFromType($type));
+              $attributes = array();
+              break;
+
           case "sfWidgetFormDateTime":
               $attributes = array(
                   'date' => array('class' => self::guessLengthFromType($type)),
                   'time' => array('class' => self::guessLengthFromType($type)),
               );
               break;
+
           default:
               $attributes = array('class' => self::guessLengthFromType($type));
               break;
