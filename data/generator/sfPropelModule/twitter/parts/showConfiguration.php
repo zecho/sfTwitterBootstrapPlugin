@@ -18,18 +18,36 @@
                                           'actions'        => $this->getShowActions(),
                                         ) ;
 
-    foreach ($this->getShowDisplay() as $name) {
-      list($field, $flag) = sfModelGeneratorConfigurationField::splitFieldWithFlag($name);
-      $field = new sfModelGeneratorConfigurationField($field, array_merge(
-        array('type' => 'Text', 'label' => sfInflector::humanize(sfInflector::underscore($field))),
-        isset($config['default'][$field]) ? $config['default'][$field] : array(),
-        isset($config['show'][$field]) ? $config['show'][$field] : array(),
-        array('flag' => $flag)
-      ));
+    foreach ($this->getShowDisplay() as $name => $fields) {
+      if (is_array($fields)) { //Fieldset
+        foreach ($fields as $name) {
+          list($field, $flag) = sfModelGeneratorConfigurationField::splitFieldWithFlag($name);
+          $field = new sfModelGeneratorConfigurationField($field, array_merge(
+            array('type' => 'Text', 'label' => sfInflector::humanize(sfInflector::underscore($field))),
+            isset($config['default'][$field]) ? $config['default'][$field] : array(),
+            isset($config['show'][$field]) ? $config['show'][$field] : array(),
+            array('flag' => $flag)
+          ));
 
-      $field->setFlag($flag);
-      $this->configuration['show']['fields'][$name]  = $field;
-      $this->configuration['show']['display'][$name] = $field;
+          $field->setFlag($flag);
+          $this->configuration['show']['fields'][$name]  = $field;
+          $this->configuration['show']['display'][$name] = $field;
+        }
+      } else {
+        $name = $fields;
+
+        list($field, $flag) = sfModelGeneratorConfigurationField::splitFieldWithFlag($name);
+        $field = new sfModelGeneratorConfigurationField($field, array_merge(
+          array('type' => 'Text', 'label' => sfInflector::humanize(sfInflector::underscore($field))),
+          isset($config['default'][$field]) ? $config['default'][$field] : array(),
+          isset($config['show'][$field]) ? $config['show'][$field] : array(),
+          array('flag' => $flag)
+        ));
+
+        $field->setFlag($flag);
+        $this->configuration['show']['fields'][$name]  = $field;
+        $this->configuration['show']['display'][$name] = $field;
+      }
     }
 
     foreach ($this->configuration['show']['actions'] as $action => $parameters) {
