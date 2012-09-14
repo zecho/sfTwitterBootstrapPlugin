@@ -12,7 +12,7 @@
       [?php echo $form[$name]->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes) ?]
 
       [?php if ($help): ?]
-        <p class="help-block">[?php echo __($help, array(), '<?php echo $this->getI18nCatalogue() ?>') ?]</p>
+        <p class="help-block">[?php echo __(html_entity_decode($help), array(), '<?php echo $this->getI18nCatalogue() ?>') ?]</p>
       [?php elseif ($help = $form[$name]->renderHelp()): ?]
         <p class="help-block">[?php echo $help ?]</p>
       [?php endif; ?]
