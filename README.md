@@ -269,7 +269,7 @@ The best way to show how to use this parameters is with an example:
 
     #in application/config/app.yml
     all:
-      sf_admin_dash:
+      sf_twitter_bootstrap:
         items:
           Articles:
             url:              article
