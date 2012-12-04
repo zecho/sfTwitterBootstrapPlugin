@@ -31,7 +31,7 @@
 
 .dev.navbar .nav > li > a,
 .preprod.navbar .nav > li > a,
-p.logged { color: white; }
+p.logged { color: white; text-shadow: none; }
 
 .dev.navbar .nav > li > a:hover,
 .preprod.navbar .nav > li > a:hover { color: black; }
