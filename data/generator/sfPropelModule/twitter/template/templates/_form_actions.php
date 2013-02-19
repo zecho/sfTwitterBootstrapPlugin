@@ -19,6 +19,11 @@
   <?php echo $this->addCredentialCondition('[?php echo $helper->linkToSaveAndAdd($form->getObject(), '.$this->asPhp($params).') ?]', $params) ?>
 
 <?php else: ?>
+    <?php if (isset($params['condition'])): ?>
+        [?php if
+        ( <?php echo (isset($params['condition']['invert']) && $params['condition']['invert'] ? '!' : '') . '$' . $this->getSingularName() . '->' . $params['condition']['function'] ?>
+        ( <?php echo (isset($params['condition']['params']) ? $params['condition']['params'] : '') ?> ) ):  ?]
+        <?php endif; ?>
 
 [?php if (method_exists($helper, 'linkTo<?php echo $method = ucfirst(sfInflector::camelize($name)) ?>')): ?]
   <?php echo $this->addCredentialCondition('[?php echo $helper->linkTo'.$method.'($form->getObject(), '.$this->asPhp($params).') ?]', $params) ?>
@@ -34,6 +39,9 @@
 
 [?php endif; ?]
 
+    <?php if (isset($params['condition'])): ?>
+    [?php endif; ?]
+    <?php endif; ?>
 <?php endif; ?>
 <?php endforeach; ?>
 <?php endforeach; ?>
