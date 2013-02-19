@@ -23,10 +23,10 @@
                 }
                 echo $this->addCredentialCondition($this->getLinkToAction($name, $params, true), $params)
                 ?>
-                <?php if (isset($params['condition'])): ?>
-                [?php endif; ?]
-                <?php endif; ?>
             </li>
+            <?php if (isset($params['condition'])): ?>
+            [?php endif; ?]
+            <?php endif; ?>
             <?php endif; ?>
         <?php endforeach; ?>
     </ul>
