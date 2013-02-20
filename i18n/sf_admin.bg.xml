@@ -125,6 +125,14 @@
           <source>Back to list</source>
           <target>Към списъка</target>
         </trans-unit>
+        <trans-unit id="">
+          <source>Logged in as</source>
+          <target>Влязъл като</target>
+        </trans-unit>
+        <trans-unit>
+          <source>Logout</source>
+          <target>Изход</target>
+        </trans-unit>
     </body>
   </file>
 </xliff>
